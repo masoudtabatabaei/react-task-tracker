@@ -37,7 +37,11 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <Tasks tasks={tasks} onDelete={handleDelete} />
+      {tasks.length === 0 ? (
+        "There aren't any task"
+      ) : (
+        <Tasks tasks={tasks} onDelete={handleDelete} />
+      )}
     </div>
   );
 }
