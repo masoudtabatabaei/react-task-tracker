@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className="header-container">
       <h3>Task Tracker</h3>
-      <Button btnClass="primary" text="Add Task" handleClick={handleClick} />
+      <Button text="Add Task" handleClick={handleClick} />
     </div>
   );
 };

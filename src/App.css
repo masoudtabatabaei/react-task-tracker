@@ -1,5 +1,10 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .container {
-  display: flex;
   max-width: 1200px;
   margin: 20px auto;
 }
@@ -12,6 +17,11 @@
 }
 
 .btn-primary {
-  background-color: #444444;
+  background-color: #d7e4dc;
+  color: #000000;
+}
+
+.btn-danger {
+  background-color: #d90505;
   color: #ffffff;
 }

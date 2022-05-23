@@ -6,4 +6,8 @@ const Button = ({ btnClass, text, handleClick }) => {
   );
 };
 
+Button.defaultProps = {
+  btnClass: "primary",
+};
+
 export default Button;
