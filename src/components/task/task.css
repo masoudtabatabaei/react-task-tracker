@@ -1,0 +1,15 @@
+.task {
+  font-size: 20px;
+  margin-bottom: 14px;
+  padding: 8px;
+  box-shadow: 0 1px 4px #cccccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task p {
+  font-size: 0.8em;
+  color: #555555;
+}
