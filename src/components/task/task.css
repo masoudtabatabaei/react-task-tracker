@@ -13,3 +13,7 @@
   font-size: 0.8em;
   color: #555555;
 }
+
+.task.hasReminder {
+  border-left: 8px solid #047f04;
+}

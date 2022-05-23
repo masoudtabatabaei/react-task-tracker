@@ -34,13 +34,22 @@ function App() {
     setTasks(filtered);
   };
 
+  // handle toggle
+  const handleToggle = (id) => {
+    const tasksClone = [...tasks];
+    const index = tasksClone.findIndex((task) => task.id === id);
+    tasksClone[index].reminder = !tasksClone[index].reminder;
+
+    setTasks(tasksClone);
+  };
+
   return (
     <div className="container">
       <Header />
       {tasks.length === 0 ? (
         "There aren't any task"
       ) : (
-        <Tasks tasks={tasks} onDelete={handleDelete} />
+        <Tasks tasks={tasks} onDelete={handleDelete} onToggle={handleToggle} />
       )}
     </div>
   );

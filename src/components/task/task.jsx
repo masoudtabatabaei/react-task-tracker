@@ -1,9 +1,13 @@
 import Button from "../button/button";
 import "./task.css";
 
-const Task = ({ task, onDelete }) => {
+const Task = ({ task, onDelete, onToggle }) => {
+  const hasReminder = task.reminder ? "hasReminder" : "";
   return (
-    <div className="task">
+    <div
+      className={`task ${hasReminder}`}
+      onDoubleClick={() => onToggle(task.id)}
+    >
       <div>
         <h4>{task.text}</h4>
         <p>{task.day}</p>
