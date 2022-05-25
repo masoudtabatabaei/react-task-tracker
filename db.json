@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Send Resume for X company",
+      "day": "May 5th at 2:30pm",
+      "reminder": true
+    },
+    {
+      "id": 2,
+      "text": "Answer questions on Stackoverflow",
+      "day": "May 10th at 10:15am",
+      "reminder": true
+    },
+    {
+      "id": 3,
+      "text": "Debug B2B web application",
+      "day": "May 12th at 3:45pm",
+      "reminder": false
+    }
+  ]
+}
