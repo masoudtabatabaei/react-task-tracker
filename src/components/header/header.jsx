@@ -7,6 +7,7 @@ const Header = ({ onShowForm, showAddTaskBtn }) => {
       <h3>Task Tracker</h3>
       <Button
         text={showAddTaskBtn ? "Add task" : "Close"}
+        btnClass={showAddTaskBtn ? "primary" : "danger"}
         handleClick={onShowForm}
       />
     </div>
