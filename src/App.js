@@ -35,13 +35,33 @@ function App() {
     setTasks(filtered);
   };
 
-  // handle toggle on task
-  const handleToggle = (id) => {
-    const tasksClone = [...tasks];
-    const index = tasksClone.findIndex((task) => task.id === id);
-    tasksClone[index].reminder = !tasksClone[index].reminder;
+  // fetch tasks
+  const fetchATask = async (id) => {
+    const result = await fetch(`http://localhost:8000/tasks/${id}`);
+    const data = await result.json();
 
-    setTasks(tasksClone);
+    return data;
+  };
+
+  // handle toggle on task
+  const handleToggle = async (id) => {
+    const task = await fetchATask(id);
+    const updatedTask = { ...task, reminder: !task.reminder };
+
+    const result = await fetch(`http://localhost:8000/tasks/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedTask),
+    });
+
+    const data = await result.json();
+    setTasks(
+      tasks.map((task) => {
+        return task.id === id ? { ...task, reminder: data.reminder } : task;
+      })
+    );
   };
 
   // submit new task

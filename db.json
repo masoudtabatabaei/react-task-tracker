@@ -7,22 +7,10 @@
       "reminder": true
     },
     {
-      "id": 3,
-      "text": "Debug B2B web application",
-      "day": "May 12th at 3:45pm",
-      "reminder": false
-    },
-    {
       "text": "Meeting with Chloe",
       "day": "Friday",
-      "reminder": true,
+      "reminder": false,
       "id": 6
-    },
-    {
-      "text": "Go to Gym",
-      "day": "Tommorow",
-      "reminder": true,
-      "id": 7
     }
   ]
 }
