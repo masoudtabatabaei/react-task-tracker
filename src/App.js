@@ -45,11 +45,17 @@ function App() {
   };
 
   // submit new task
-  const handleSubmitTask = (task) => {
+  const handleSubmitTask = async (task) => {
     const newId = tasks[tasks.length - 1].id + 1;
     const newTask = { ...task, id: newId };
-    console.log(newTask);
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+    const result = await fetch("http://localhost:8000/tasks", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(newTask),
+    });
+
+    const data = await result.json();
+    setTasks([...tasks, data]);
   };
 
   // handle show Add task form
