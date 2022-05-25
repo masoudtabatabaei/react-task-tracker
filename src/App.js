@@ -27,6 +27,8 @@ function App() {
   ];
 
   const [tasks, setTasks] = useState(taskList);
+  const [showAddTaskForm, setShowAddTaskForm] = useState(false);
+  const [showAddTaskBtn, setShowAddTaskBtn] = useState(true);
 
   // handle delete task
   const handleDelete = (id) => {
@@ -52,10 +54,16 @@ function App() {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
+  // handle show Add task form
+  const handleShowForm = () => {
+    setShowAddTaskForm(!showAddTaskForm);
+    setShowAddTaskBtn(!showAddTaskBtn);
+  };
+
   return (
     <div className="container">
-      <Header />
-      <AddTask onSubmit={handleSubmitTask} />
+      <Header showAddTaskBtn={showAddTaskBtn} onShowForm={handleShowForm} />
+      <AddTask onSubmit={handleSubmitTask} showAddTaskForm={showAddTaskForm} />
       {tasks.length === 0 ? (
         "There aren't any task"
       ) : (

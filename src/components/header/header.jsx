@@ -1,16 +1,14 @@
 import Button from "../button/button";
 import "./header.css";
 
-const Header = () => {
-  //handle click
-  const handleClick = () => {
-    console.log("Clicked");
-  };
-
+const Header = ({ onShowForm, showAddTaskBtn }) => {
   return (
     <div className="header-container">
       <h3>Task Tracker</h3>
-      <Button text="Add Task" handleClick={handleClick} />
+      <Button
+        text={showAddTaskBtn ? "Add task" : "Close"}
+        handleClick={onShowForm}
+      />
     </div>
   );
 };
