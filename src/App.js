@@ -1,34 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/header/header";
 import Tasks from "./components/tasks/tasks";
 import AddTask from "./components/addTask/addTask";
 import "./App.css";
 
 function App() {
-  const taskList = [
-    {
-      id: 1,
-      text: "Send Resume for X company",
-      day: "May 5th at 2:30pm",
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: "Answer questions on Stackoverflow",
-      day: "May 10th at 10:15am",
-      reminder: true,
-    },
-    {
-      id: 3,
-      text: "Debug B2B web application",
-      day: "May 12th at 3:45pm",
-      reminder: false,
-    },
-  ];
-
-  const [tasks, setTasks] = useState(taskList);
+  const [tasks, setTasks] = useState([]);
   const [showAddTaskForm, setShowAddTaskForm] = useState(false);
   const [showAddTaskBtn, setShowAddTaskBtn] = useState(true);
+
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromSerevr = await fetchTasks();
+      setTasks(tasksFromSerevr);
+    };
+    getTasks();
+  }, []);
+
+  // fetch tasks
+  const fetchTasks = async () => {
+    const result = await fetch("http://localhost:8000/tasks");
+    const data = await result.json();
+
+    return data;
+  };
 
   // handle delete task
   const handleDelete = (id) => {
