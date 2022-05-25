@@ -26,7 +26,10 @@ function App() {
   };
 
   // handle delete task
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
+    await fetch(`http://localhost:8000/tasks/${id}`, {
+      method: "DELETE",
+    });
     const tasksClone = [...tasks];
     const filtered = tasksClone.filter((task) => task.id !== id);
     setTasks(filtered);
