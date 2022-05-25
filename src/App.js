@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./components/header/header";
 import Tasks from "./components/tasks/tasks";
+import AddTask from "./components/addTask/addTask";
 import "./App.css";
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
     setTasks(filtered);
   };
 
-  // handle toggle
+  // handle toggle on task
   const handleToggle = (id) => {
     const tasksClone = [...tasks];
     const index = tasksClone.findIndex((task) => task.id === id);
@@ -43,9 +44,18 @@ function App() {
     setTasks(tasksClone);
   };
 
+  // submit new task
+  const handleSubmitTask = (task) => {
+    const newId = tasks[tasks.length - 1].id + 1;
+    const newTask = { ...task, id: newId };
+    console.log(newTask);
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+  };
+
   return (
     <div className="container">
       <Header />
+      <AddTask onSubmit={handleSubmitTask} />
       {tasks.length === 0 ? (
         "There aren't any task"
       ) : (
