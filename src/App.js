@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/header/header";
+import Menu from "./components/menu/menu";
 import Tasks from "./components/tasks/tasks";
 import AddTask from "./components/addTask/addTask";
 import "./App.css";
+import About from "./components/about/about";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -85,15 +88,37 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <Header showAddTaskBtn={showAddTaskBtn} onShowForm={handleShowForm} />
-      <AddTask onSubmit={handleSubmitTask} showAddTaskForm={showAddTaskForm} />
-      {tasks.length === 0 ? (
-        "There aren't any task"
-      ) : (
-        <Tasks tasks={tasks} onDelete={handleDelete} onToggle={handleToggle} />
-      )}
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Menu />
+        <Header showAddTaskBtn={showAddTaskBtn} onShowForm={handleShowForm} />
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={
+              <>
+                <AddTask
+                  onSubmit={handleSubmitTask}
+                  showAddTaskForm={showAddTaskForm}
+                />
+                {tasks.length === 0 ? (
+                  "There aren't any task"
+                ) : (
+                  <Tasks
+                    tasks={tasks}
+                    onDelete={handleDelete}
+                    onToggle={handleToggle}
+                  />
+                )}
+              </>
+            }
+          />
+          <Route path="/about" element={<About />} />
+        </Routes>
+        {}
+      </div>
+    </BrowserRouter>
   );
 }
 
