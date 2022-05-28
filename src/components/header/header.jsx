@@ -4,7 +4,6 @@ import "./header.css";
 
 const Header = ({ onShowForm, showAddTaskBtn }) => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <div className="header-container">
